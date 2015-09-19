@@ -14,6 +14,36 @@ var router = express.Router();
 var MAPS_API_KEY = config.GMAPS_API_KEY;
 
 router.get('/location/:start/:end', function(req, res, next) {
+
+	var get_businesses = function(lat, lng, cb) {
+		request('https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lng+'&key='+MAPS_API_KEY, function(error, response, body) {
+			if (response.statusCode == 200) {
+				body = JSON.parse(body);
+				var nearest_address;
+				if (body.results.length > 1) {
+					nearest_address = body.results[0].formatted_address;
+				} else {
+					nearest_address = body.results.formatted_address;
+				}
+
+				if (typeof nearest_address != "undefined") {
+					yelp.search({term: "food", location: nearest_address, limit: 3}, function(error, data) {
+						if (error) throw error;
+						var businesses = [];
+						for (var j = 0; j < data.businesses.length; j++) {
+							var business = {};
+							business.business_name = data.businesses[j].name;
+							business.yelp_url = data.businesses[j].url;
+							business.img_url = data.businesses[j].image_url;
+							businesses.push(business);
+						}
+						cb(businesses);
+					});
+				}
+			}
+		});
+	}
+
 	request('https://maps.googleapis.com/maps/api/directions/json?origin=Toronto&destination=Montreal&key='+MAPS_API_KEY, function(error, response, body) {
 		if (error) throw error;
 		if (response.statusCode == 200) {
@@ -34,35 +64,22 @@ router.get('/location/:start/:end', function(req, res, next) {
 				step.start_location = steps[i].start_location;
 				step.end_location = steps[i].end_location;
 				step.distance = steps[i].distance.text;
-				step.duration = steps[i].distance.text;
+				step.duration = steps[i].duration.text;
+				step.businesses = [];
 
-				request('https://maps.googleapis.com/maps/api/geocode/json?latlng='+step.end_location.lat+','+step.end_location.lng+'&key='+MAPS_API_KEY, function(error, response, body) {
-					if (response.statusCode == 200) {
-						body = JSON.parse(body);
-						var nearest_address;
-						if (body.results.length > 1) {
-							nearest_address = body.results[0].formatted_address;
-						} else {
-							nearest_address = body.results.formatted_address;
-						}
-
-						if (typeof nearest_address != "undefined") {
-							console.log(nearest_address);
-
-							yelp.search({term: "food", location: nearest_address, limit: 1}, function(error, data) {
-								if (error) throw error;
-								console.log(data)
-							});
-						}
-					}
+				get_businesses(step.end_location.lat, step.end_location.lng, function(businesses){
+					step.businesses = [1,2,3];
+					//console.log(businesses);
+					//console.log(step);
 				});
-
 				route.steps.push(step);
 			}
-			//console.log(route);
+			console.log(route);
+			//res.render('location', {title: 'Plan', route: route });
+			res.send(route);
 		}
 	});
-	res.send('respond with api resource');
+
 });
 
 module.exports = router;

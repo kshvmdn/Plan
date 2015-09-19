@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/dist/bower_components/semantic/dist/semantic.css">
+  </head>
+  <body>
+  	<div class="ui container page">
+  		<h1><%= title %></h1>
+      <div>
+        <div><%= route.distance %> // <%= route.duration %></div>
+        <div><%= route.start_address %> <i>to</i> <%= route.end_address %></div>
+        <div>
+          <ol>
+            <% for (var i = 0; i < route.steps.length; i++) { %>
+                <li><%- route.steps[i].instructions %></li>
+              <p><%= route.steps[i].distance %> // <%= route.steps[i].duration %></p>
+              <% for (var j = 0; j < route.steps[i].businesses.length; j++) { %>
+                <a href="<%= route.steps[i].businesses[j].yelp_url %>">
+                  <p><%= route.steps[i].businesses[j].business_name %></p>
+                  <img src="<%= route.steps[i].businesses[j].img_url %>">
+                </a>
+              <% } %>
+            <% } %>
+          </ol>
+        </div>
+      </div>
+  	</div>
+  </body>
+</html>
