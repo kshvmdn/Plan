@@ -7,23 +7,22 @@
   </head>
   <body>
   	<div class="ui container page">
-  		<h1><%= title %></h1>
-      <div>
-        <div><%= route.distance %> // <%= route.duration %></div>
-        <div><%= route.start_address %> <i>to</i> <%= route.end_address %></div>
-        <div>
-          <ol>
-            <% for (var i = 0; i < route.steps.length; i++) { %>
-                <li><%- route.steps[i].instructions %></li>
-              <p><%= route.steps[i].distance %> // <%= route.steps[i].duration %></p>
-              <% for (var j = 0; j < route.steps[i].businesses.length; j++) { %>
-                <a href="<%= route.steps[i].businesses[j].yelp_url %>">
-                  <p><%= route.steps[i].businesses[j].business_name %></p>
-                  <img src="<%= route.steps[i].businesses[j].img_url %>">
-                </a>
-              <% } %>
-            <% } %>
-          </ol>
+  		<div class="ui huge header" style="color:#555"><%= title %>.</div>
+      <div class="ui horizontal divider"></div>
+      <div class="ui basic segment" style="margin-bottom:40px;">
+        <div class="ui left floated header"><%= route.start_address %> <i>to</i> <%= route.end_address %></div>
+        <div class="ui right floated header"><%= route.duration %> (<i><%= route.distance %></i>)</div>
+      </div>
+      <div class="ui padded segment">
+        <div class="ui ordered list">
+          <% for (var i = 0; i < route.steps.length; i++) { %>
+            <div class="item">
+              <div class="content">
+                <div class="header"><%- route.steps[i].instructions %></div>
+                <div class="description"><%= route.steps[i].distance %> // <%= route.steps[i].duration %></div>
+              </div>
+            </div>
+          <% } %>
         </div>
       </div>
   	</div>

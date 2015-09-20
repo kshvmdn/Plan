@@ -4,10 +4,35 @@
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel="stylesheet" href="/dist/bower_components/semantic/dist/semantic.css">
+    <script src="/dist/bower_components/jquery/dist/jquery.min.js"></script>
+    <script>
+    $(function() {
+      $('button').click(function(){
+        var origin = $.trim($('input[name="orig"]').val());
+        var destination = $.trim($('input[name="dest"]').val());
+        window.location.replace('http://localhost:3000/api/location/'+origin+'/'+destination);
+        alert("hi");
+      });
+    });
+    </script>
   </head>
   <body>
-  	<div class="ui container page">
-  		<h1><%= title %></h1>
-  	</div>
+    <div class="ui container page">
+      <div class="ui huge header" style="color:#555"><%= title %>.</div>
+      <div class="ui horizontal divider"></div>
+      <div class="ui basic segment" style="margin-bottom:40px;">
+        <div class="ui form">
+          <div class="field">
+            <label>Origin</label>
+            <input type="text" name="orig">
+          </div>
+          <div class="field">
+            <label>Destination</label>
+            <input type="text" name="dest">
+          </div>
+          <button class="ui green button" type="submit">Go</button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
