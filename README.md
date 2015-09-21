@@ -1,6 +1,5 @@
 # Plan
-Plan your road trips
-
+Plan your road trips.
 Attempted to refine Google Maps Search namely for road trips.
 
 ### Features (planned)
