@@ -3,12 +3,12 @@ Plan your road trips
 
 Attempted to refine Google Maps Search namely for road trips.
 
-### Features (planned, lol)
-- Restaurants that appear along the way (Complete)
-- Duration + distance of the ride (Complete)
-- Gas prices in the specified regions
+### Features (planned)
+- Restaurants that appear along the way (complete)
+- Duration + distance of the ride (complete)
+- Gas prices for the specified regions
 - Outlet malls + attractions along the path
-- Optionality of splitting costs
+- Function to split costs (i/a)
 
 ### Technologies
 - Node.js
@@ -18,4 +18,4 @@ Attempted to refine Google Maps Search namely for road trips.
 - [Google Direction API](https://developers.google.com/maps/documentation/directions)
 - [Google Geocode API](https://developers.google.com/maps/documentation/geocoding)
 
-Created in under 30 hours at Hack the North 2015, at the University of Waterloo.
+Created in under 30 hours at Hack the North 2015 at the University of Waterloo.
