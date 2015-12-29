@@ -9,7 +9,7 @@ Add features to Google Maps, namely useful for _longer_ road trips. (e.g. travel
 - Outlet malls + attractions along the path
 - Function to split costs
 
-_As of DEC 29, Google has added all of the aforementioned features to Maps, making this app **completely** useless._ lol gg
+As of Dec. 29, Google has added all of the aforementioned features to Maps, making this app **completely** useless. lol gg
 
 ### Technologies
 - Node + Express
@@ -18,4 +18,4 @@ _As of DEC 29, Google has added all of the aforementioned features to Maps, maki
 - [Google Direction API](https://developers.google.com/maps/documentation/directions)
 - [Google Geocode API](https://developers.google.com/maps/documentation/geocoding)
 
-Created in under 30 hours at Hack the North 2015 at the University of Waterloo.
+**Created in under 30 hours at Hack the North 2015 at the University of Waterloo.**
