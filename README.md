@@ -1,6 +1,6 @@
 # Plan
 Plan your road trips.
-Attempted to add further functionality to Google Maps, namely for road trips.
+Add features to Google Maps, namely useful for _longer_ road trips. (e.g. travelling to a hackathon! 😄)
 
 ### Features
 - Restaurants that appear along the way (complete)
@@ -12,9 +12,8 @@ Attempted to add further functionality to Google Maps, namely for road trips.
 _As of DEC 29, Google has added all of the aforementioned features to Maps, making this app **completely** useless._ lol gg
 
 ### Technologies
-- Node.js
-- Express.js
-- Semantic UI (frontend) + HTML/CSS/JQuery
+- Node + Express
+- Semantic UI (frontend framework) + HTML/CSS/JQuery
 - [Yelp API](https://www.yelp.ca/developers/documentation/v2/overview)
 - [Google Direction API](https://developers.google.com/maps/documentation/directions)
 - [Google Geocode API](https://developers.google.com/maps/documentation/geocoding)
